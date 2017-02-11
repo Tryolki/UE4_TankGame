@@ -15,6 +15,8 @@ class UE4_TANKGAME_API ATankPlayerController : public APlayerController
 	GENERATED_BODY()
 	
 public: 
+	void Tick(float DeltaTime) override;
 	ATank * GetControlledTank() const;
 	void BeginPlay() override;
+	void AimTowardsCrosshair();
 };
