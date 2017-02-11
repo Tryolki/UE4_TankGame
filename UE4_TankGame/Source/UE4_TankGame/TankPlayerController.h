@@ -15,8 +15,15 @@ class UE4_TANKGAME_API ATankPlayerController : public APlayerController
 	GENERATED_BODY()
 	
 public: 
+	UPROPERTY(EditanyWhere)
+	float CrossHairXLocation = 0.5f;
+	UPROPERTY(EditanyWhere)
+	float CrossHairYLocation = 0.3f;
+
 	void Tick(float DeltaTime) override;
 	ATank * GetControlledTank() const;
 	void BeginPlay() override;
 	void AimTowardsCrosshair();
+	bool GetSightRayHitLocation(FVector & HitLocation) const;
+	bool GetLookDirection(FVector2D ScreenLocation, FVector & LookDirection) const;
 };
