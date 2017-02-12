@@ -32,7 +32,7 @@ void ATankAIController::Tick(float DeltaTime)
 	auto PlayerTank = GetPlayerController();
 	if (PlayerTank)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("%s aim at %s"), *GetControlledTank()->GetName(), *PlayerTank->GetName());
+		//UE_LOG(LogTemp, Warning, TEXT("%s aim at %s"), *GetControlledTank()->GetName(), *PlayerTank->GetName());
 		GetControlledTank()->AimAt(PlayerTank->GetActorLocation());
 	}
 

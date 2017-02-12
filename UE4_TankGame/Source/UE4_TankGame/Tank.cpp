@@ -4,6 +4,11 @@
 #include "Tank.h"
 
 
+void ATank::SetBarrelReference(UStaticMeshComponent * BarrelComponent)
+{
+	TankAimingComponent->SetBarrelReference(BarrelComponent);
+}
+
 // Sets default values
 ATank::ATank()
 {
@@ -35,7 +40,7 @@ void ATank::SetupPlayerInputComponent(class UInputComponent* InputComponent)
 
 void ATank::AimAt(FVector HitLocation)
 {
-	TankAimingComponent->AimAt(HitLocation);
+	TankAimingComponent->AimAt(HitLocation, LaunchSpeed);
 }
 
 

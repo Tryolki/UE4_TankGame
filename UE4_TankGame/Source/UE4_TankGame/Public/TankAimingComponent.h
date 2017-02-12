@@ -15,12 +15,11 @@ public:
 	// Sets default values for this component's properties
 	UTankAimingComponent();
 
-	// Called when the game starts
-	virtual void BeginPlay() override;
+	//TODO Set reference to turret. SetTurretReference(UStaticMeshComponent * component)
 	
-	// Called every frame
-	virtual void TickComponent( float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction ) override;
-
-	void AimAt(FVector WorldSpaceAim);
-	
+	void AimAt(FVector WorldSpaceAim, float LaunchSpeed);
+	void SetBarrelReference(UStaticMeshComponent * component);
+	void MoveBarrelTowards(const FVector & AimDirection);
+private:
+	UStaticMeshComponent* BarrelMeshComponent = nullptr;
 };
