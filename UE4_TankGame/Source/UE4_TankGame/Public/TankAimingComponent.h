@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include "TankBarrel.h"
 #include "Components/ActorComponent.h"
 #include "TankAimingComponent.generated.h"
 
@@ -18,8 +19,8 @@ public:
 	//TODO Set reference to turret. SetTurretReference(UStaticMeshComponent * component)
 	
 	void AimAt(FVector WorldSpaceAim, float LaunchSpeed);
-	void SetBarrelReference(UStaticMeshComponent * component);
+	void SetBarrelReference(UTankBarrel * component);
 	void MoveBarrelTowards(const FVector & AimDirection);
 private:
-	UStaticMeshComponent* BarrelMeshComponent = nullptr;
+	UTankBarrel* BarrelMeshComponent = nullptr;
 };

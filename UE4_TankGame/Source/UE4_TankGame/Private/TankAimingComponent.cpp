@@ -37,7 +37,7 @@ void UTankAimingComponent::AimAt(FVector WorldSpaceAim, float LaunchSpeed)
 	}
 }
 
-void UTankAimingComponent::SetBarrelReference(UStaticMeshComponent * component)
+void UTankAimingComponent::SetBarrelReference(UTankBarrel * component)
 {
 	BarrelMeshComponent = component;
 }

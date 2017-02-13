@@ -4,9 +4,10 @@
 #include "Tank.h"
 
 
-void ATank::SetBarrelReference(UStaticMeshComponent * BarrelComponent)
+void ATank::SetBarrelReference(UTankBarrel * BarrelComponent)
 {
 	TankAimingComponent->SetBarrelReference(BarrelComponent);
+	// UE_LOG(LogTemp, Warning, TEXT("%s"), *BarrelComponent->GetName());
 }
 
 // Sets default values
