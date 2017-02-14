@@ -4,6 +4,8 @@
 #include "UE4_TankGame.h"
 #include "TankAimingComponent.h"
 #include "TankBarrel.h"
+#include "TankTurret.h"
+
 
 
 // Sets default values for this component's properties
@@ -46,12 +48,17 @@ void UTankAimingComponent::SetBarrelReference(UTankBarrel * component)
 	BarrelMeshComponent = component;
 }
 
+void UTankAimingComponent::SetTurretReference(UTankTurret * component)
+{
+	Turret = component;
+	Turret->SetBarrelReference(BarrelMeshComponent);
+}
+
 void UTankAimingComponent::MoveBarrelTowards(const FVector & AimDirection)
 {
 	auto BarrelRotator = BarrelMeshComponent->GetForwardVector().Rotation();
 	auto AimAsRotator = AimDirection.Rotation();
 	auto DeltaRotator = AimAsRotator - BarrelRotator;
-	UE_LOG(LogTemp, Warning, TEXT("%s"), *DeltaRotator.ToString());
-
-	BarrelMeshComponent->ElevateBarrel(DeltaRotator.Pitch);
+	Turret->ElevateTurret(DeltaRotator.Yaw, DeltaRotator.Pitch);
+	//BarrelMeshComponent->ElevateBarrel(DeltaRotator.Pitch);
 }

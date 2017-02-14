@@ -12,6 +12,11 @@ void ATank::SetBarrelReference(UTankBarrel * BarrelComponent)
 	// UE_LOG(LogTemp, Warning, TEXT("%s"), *BarrelComponent->GetName());
 }
 
+void ATank::SetTurretReference(UTankTurret * TurretComponent)
+{
+	TankAimingComponent->SetTurretReference(TurretComponent);
+}
+
 // Sets default values
 ATank::ATank()
 {

@@ -2,6 +2,7 @@
 
 #pragma once
 class UTankBarrel;
+class UTankTurret;
 class UTankAimingComponent;
 #include "GameFramework/Pawn.h"
 #include "Tank.generated.h"
@@ -19,6 +20,8 @@ public:
 	UFUNCTION(BlueprintCallable, Category = Setup)
 	void SetBarrelReference(UTankBarrel * BarrelComponent);
 
+	UFUNCTION(BlueprintCallable, Category = Setup)
+	void SetTurretReference(UTankTurret * TurretComponent);
 	// Sets default values for this pawn's properties
 	ATank();
 

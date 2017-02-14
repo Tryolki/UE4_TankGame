@@ -3,6 +3,7 @@
 #pragma once
 
 class UTankBarrel;
+class UTankTurret;
 #include "Components/ActorComponent.h"
 #include "TankAimingComponent.generated.h"
 
@@ -19,7 +20,9 @@ public:
 	
 	void AimAt(FVector WorldSpaceAim, float LaunchSpeed);
 	void SetBarrelReference(UTankBarrel * component);
+	void SetTurretReference(UTankTurret * component);
 	void MoveBarrelTowards(const FVector & AimDirection);
 private:
 	UTankBarrel* BarrelMeshComponent = nullptr;
+	UTankTurret* Turret = nullptr;
 };
