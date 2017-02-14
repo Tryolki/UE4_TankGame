@@ -33,7 +33,7 @@ void ATankAIController::Tick(float DeltaTime)
 	if (PlayerTank)
 	{
 		//UE_LOG(LogTemp, Warning, TEXT("%s aim at %s"), *GetControlledTank()->GetName(), *PlayerTank->GetName());
-		GetControlledTank()->AimAt(PlayerTank->GetActorLocation());
+		//GetControlledTank()->AimAt(PlayerTank->GetActorLocation());
 	}
 
 

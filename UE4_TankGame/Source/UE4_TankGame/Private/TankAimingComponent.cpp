@@ -27,12 +27,16 @@ void UTankAimingComponent::AimAt(FVector WorldSpaceAim, float LaunchSpeed)
 		StartLocation,
 		EndLocation,
 		LaunchSpeed,
+		false,
+		0,
+		0,
 		ESuggestProjVelocityTraceOption::DoNotTrace
 	);
 	if (bHaveAimSolution)
 	{
 		FVector AimDirection = OutLaunchVelocity.GetSafeNormal();
 		auto TankName = GetOwner()->GetName();
+
 		MoveBarrelTowards(AimDirection);
 	}
 }
@@ -46,7 +50,8 @@ void UTankAimingComponent::MoveBarrelTowards(const FVector & AimDirection)
 {
 	auto BarrelRotator = BarrelMeshComponent->GetForwardVector().Rotation();
 	auto AimAsRotator = AimDirection.Rotation();
-	UE_LOG(LogTemp, Warning, TEXT("%s to %s"), *GetOwner()->GetName(), *AimAsRotator.ToString());
+	//UE_LOG(LogTemp, Warning, TEXT("%s to %s"), *GetOwner()->GetName(), *AimAsRotator.ToString());
 	auto DeltaRotator = AimAsRotator - BarrelRotator;
 
+	BarrelMeshComponent->ElevateBarrel(5.f);
 }

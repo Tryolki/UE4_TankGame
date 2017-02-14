@@ -20,7 +20,7 @@ public:
 	UPROPERTY(EditanyWhere)
 	float CrossHairYLocation = 0.3f;
 	UPROPERTY(VisibleAnywhere)
-	float visibleDistance = 50000.f;
+	float visibleDistance = 10000.f;
 	void Tick(float DeltaTime) override;
 	ATank * GetControlledTank() const;
 	void BeginPlay() override;
