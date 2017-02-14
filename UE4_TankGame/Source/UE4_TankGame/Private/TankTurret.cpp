@@ -9,7 +9,7 @@ void UTankTurret::SetBarrelReference(UTankBarrel * Barrel)
 	BarrelComponent = Barrel;
 }
 
-void UTankTurret::ElevateTurret(float RelativeTurretSpeed, float RelativeBarrelSpeed) 
+void UTankTurret::Rotate(float RelativeTurretSpeed, float RelativeBarrelSpeed) 
 {
 	RelativeTurretSpeed = FMath::Clamp<float>(RelativeTurretSpeed, -1, +1);
 	auto RelativeSpeed = RelativeTurretSpeed * MaxDegreePerSecond * GetWorld()->GetDeltaSeconds();

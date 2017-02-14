@@ -15,7 +15,7 @@ class UE4_TANKGAME_API UTankTurret : public UStaticMeshComponent
 	GENERATED_BODY()
 	
 public:
-	void ElevateTurret(float RelativeTurretSpeed, float RelativeBarrelSpeed);
+	void Rotate(float RelativeTurretSpeed, float RelativeBarrelSpeed);
 	void SetBarrelReference(UTankBarrel * Barrel);
 	
 	UPROPERTY(EditAnywhere, Category = "Setup")

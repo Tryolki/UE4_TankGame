@@ -20,9 +20,9 @@ UTankAimingComponent::UTankAimingComponent()
 
 void UTankAimingComponent::AimAt(FVector WorldSpaceAim, float LaunchSpeed)
 {
-	if (!BarrelMeshComponent) { return; }
+	if (!Barrel || !Turret) { return; }
 	FVector OutLaunchVelocity;
-	FVector StartLocation = BarrelMeshComponent->GetSocketLocation(FName("Projectile"));
+	FVector StartLocation = Barrel->GetSocketLocation(FName("Projectile"));
 	FVector EndLocation = WorldSpaceAim;
 	auto bHaveAimSolution = UGameplayStatics::SuggestProjectileVelocity
 	(
@@ -45,20 +45,20 @@ void UTankAimingComponent::AimAt(FVector WorldSpaceAim, float LaunchSpeed)
 
 void UTankAimingComponent::SetBarrelReference(UTankBarrel * component)
 {
-	BarrelMeshComponent = component;
+	Barrel = component;
 }
 
 void UTankAimingComponent::SetTurretReference(UTankTurret * component)
 {
 	Turret = component;
-	Turret->SetBarrelReference(BarrelMeshComponent);
+	Turret->SetBarrelReference(Barrel);
 }
 
 void UTankAimingComponent::MoveBarrelTowards(const FVector & AimDirection)
 {
-	auto BarrelRotator = BarrelMeshComponent->GetForwardVector().Rotation();
+	if (!Turret) { return; }
+	auto BarrelRotator = Barrel->GetForwardVector().Rotation();
 	auto AimAsRotator = AimDirection.Rotation();
 	auto DeltaRotator = AimAsRotator - BarrelRotator;
-	Turret->ElevateTurret(DeltaRotator.Yaw, DeltaRotator.Pitch);
-	//BarrelMeshComponent->ElevateBarrel(DeltaRotator.Pitch);
+	Turret->Rotate(DeltaRotator.Yaw, DeltaRotator.Pitch);
 }

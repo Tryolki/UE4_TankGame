@@ -23,6 +23,6 @@ public:
 	void SetTurretReference(UTankTurret * component);
 	void MoveBarrelTowards(const FVector & AimDirection);
 private:
-	UTankBarrel* BarrelMeshComponent = nullptr;
+	UTankBarrel* Barrel = nullptr;
 	UTankTurret* Turret = nullptr;
 };
