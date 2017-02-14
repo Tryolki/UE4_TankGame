@@ -1,7 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
+
 #include "UE4_TankGame.h"
 #include "TankAimingComponent.h"
+#include "TankBarrel.h"
 
 
 // Sets default values for this component's properties
@@ -35,8 +37,6 @@ void UTankAimingComponent::AimAt(FVector WorldSpaceAim, float LaunchSpeed)
 	if (bHaveAimSolution)
 	{
 		FVector AimDirection = OutLaunchVelocity.GetSafeNormal();
-		auto TankName = GetOwner()->GetName();
-
 		MoveBarrelTowards(AimDirection);
 	}
 }
@@ -50,8 +50,8 @@ void UTankAimingComponent::MoveBarrelTowards(const FVector & AimDirection)
 {
 	auto BarrelRotator = BarrelMeshComponent->GetForwardVector().Rotation();
 	auto AimAsRotator = AimDirection.Rotation();
-	//UE_LOG(LogTemp, Warning, TEXT("%s to %s"), *GetOwner()->GetName(), *AimAsRotator.ToString());
 	auto DeltaRotator = AimAsRotator - BarrelRotator;
+	UE_LOG(LogTemp, Warning, TEXT("%s"), *DeltaRotator.ToString());
 
-	BarrelMeshComponent->ElevateBarrel(5.f);
+	BarrelMeshComponent->ElevateBarrel(DeltaRotator.Pitch);
 }

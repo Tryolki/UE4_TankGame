@@ -1,11 +1,11 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #pragma once
-
-#include "TankAimingComponent.h"
-#include "TankBarrel.h"
+class UTankBarrel;
+class UTankAimingComponent;
 #include "GameFramework/Pawn.h"
 #include "Tank.generated.h"
+
 
 UCLASS()
 class UE4_TANKGAME_API ATank : public APawn
