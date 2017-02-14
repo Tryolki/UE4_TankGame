@@ -16,7 +16,11 @@ class UE4_TANKGAME_API ATank : public APawn
 public:
 	UPROPERTY(EditAnywhere, Category = Firing)
 	float LaunchSpeed = 100000.f; // 1000 m/s
+
+	UFUNCTION(BlueprintCallable, Category = Action)
+	void Fire();
 	void AimAt(FVector HitLocation);
+
 	UFUNCTION(BlueprintCallable, Category = Setup)
 	void SetBarrelReference(UTankBarrel * BarrelComponent);
 
