@@ -15,7 +15,8 @@ class UE4_TANKGAME_API ATankAIController : public AAIController
 	GENERATED_BODY()
 	
 private:
-	ATank* PlayerController;
+	ATank* PlayerTank;
+	ATank* ControlledAITank;
 	void Tick(float DeltaTime) override;
 	void BeginPlay() override;
 	ATank* GetControlledTank() const;

@@ -16,14 +16,18 @@ void ATank::SetBarrelReference(UTankBarrel * BarrelComponent)
 }
 void ATank::Fire()
 {
-	UE_LOG(LogTemp, Warning, TEXT("Fire pressed"));
-	if (!Barrel) { return; }
-	auto Projectile = GetWorld()->SpawnActor<AProjectile>(
-		ProjectileBlueprint,
-		Barrel->GetSocketLocation(FName("Projectile")),
-		Barrel->GetSocketRotation(FName("Projectile"))
-		);
-	Projectile->LaunchProjectile(5000);
+	if ((FPlatformTime::Seconds() - LastFireTime) > ReloadTimeInSeconds)
+	{
+		if (!Barrel) { return; }
+		auto Projectile = GetWorld()->SpawnActor<AProjectile>(
+			ProjectileBlueprint,
+			Barrel->GetSocketLocation(FName("Projectile")),
+			Barrel->GetSocketRotation(FName("Projectile"))
+			);
+		Projectile->LaunchProjectile(5000);
+		LastFireTime = FPlatformTime::Seconds();
+	}
+
 }
 
 void ATank::SetTurretReference(UTankTurret * TurretComponent)
