@@ -1,0 +1,36 @@
+// Fill out your copyright notice in the Description page of Project Settings.
+
+#pragma once
+
+class UTankTrack;
+#include "GameFramework/NavMovementComponent.h"
+#include "TankMovementComponent.generated.h"
+
+/**
+ * 
+ */
+UCLASS(ClassGroup = (Custom), meta=(BlueprintSpawnableComponent))
+class UE4_TANKGAME_API UTankMovementComponent : public UNavMovementComponent
+{
+	GENERATED_BODY()
+	
+public:
+	UFUNCTION(BlueprintCallable, Category = Setup)
+	void Initialize(UTankTrack * LeftTrackToSet, UTankTrack * RightTrackToSet);
+
+	UFUNCTION(BlueprintCallable, Category = Move)
+	void IntendMoveForward(float Throw);
+	UFUNCTION(BlueprintCallable, Category = Move)
+
+	void IntendTurnRight(float Throw);
+	UFUNCTION(BlueprintCallable, Category = Move)
+	void IntendTurnLeft(float Throw);
+
+	UFUNCTION(BlueprintCallable, Category = Move)
+	void IntendMoveBack(float Throw);
+private:
+	UTankTrack * LeftTrack = nullptr;
+	UTankTrack * RightTrack = nullptr;
+
+	
+};

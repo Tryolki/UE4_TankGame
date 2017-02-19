@@ -6,6 +6,7 @@
 #include "TankAimingComponent.h"
 #include "TankBarrel.h"
 #include "Projectile.h"
+#include "TankMovementComponent.h"
 
 
 void ATank::SetBarrelReference(UTankBarrel * BarrelComponent)

@@ -17,17 +17,6 @@ void ATankPlayerController::Tick(float DeltaTime)
 void ATankPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
-	auto ControlledTank = GetControlledTank();
-	UE_LOG(LogTemp, Warning, TEXT("Player controller begin play"));
-	if (!ControlledTank)
-	{
-		UE_LOG(LogTemp, Error, TEXT("Tank controller is empty"));
-	}
-	else
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Tank controller %s"), *ControlledTank->GetName());
-	}
-
 }
 
 void ATankPlayerController::AimTowardsCrosshair()
