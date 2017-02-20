@@ -21,4 +21,5 @@ private:
 	void BeginPlay() override;
 	ATank* GetControlledTank() const;
 	ATank* GetPlayerController() const;
+	float AcceptanceRadius = 3000.f;
 };
