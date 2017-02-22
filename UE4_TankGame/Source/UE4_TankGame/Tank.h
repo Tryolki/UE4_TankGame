@@ -9,7 +9,6 @@ class UTankMovementComponent;
 #include "GameFramework/Pawn.h"
 #include "Tank.generated.h"
 
-
 UCLASS()
 class UE4_TANKGAME_API ATank : public APawn
 {
@@ -30,12 +29,6 @@ public:
 
 	void AimAt(FVector HitLocation);
 
-	UFUNCTION(BlueprintCallable, Category = Setup)
-	void SetBarrelReference(UTankBarrel * BarrelComponent);
-
-	UFUNCTION(BlueprintCallable, Category = Setup)
-	void SetTurretReference(UTankTurret * TurretComponent);
-
 	// Sets default values for this pawn's properties
 	ATank();
 
@@ -45,9 +38,12 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
 protected:
+	UPROPERTY(BlueprintReadOnly)
 	UTankAimingComponent* TankAimingComponent = nullptr;
+
 	UPROPERTY(BlueprintReadOnly)
 	UTankMovementComponent * TankMovementComponent = nullptr;
+
 	UTankBarrel* Barrel = nullptr;
 	double LastFireTime = 0;
 };

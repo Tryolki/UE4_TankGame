@@ -9,12 +9,6 @@
 #include "TankMovementComponent.h"
 
 
-void ATank::SetBarrelReference(UTankBarrel * BarrelComponent)
-{
-	Barrel = BarrelComponent;
-	TankAimingComponent->SetBarrelReference(BarrelComponent);
-	// UE_LOG(LogTemp, Warning, TEXT("%s"), *BarrelComponent->GetName());
-}
 void ATank::Fire()
 {
 	if ((FPlatformTime::Seconds() - LastFireTime) > ReloadTimeInSeconds)
@@ -31,17 +25,12 @@ void ATank::Fire()
 
 }
 
-void ATank::SetTurretReference(UTankTurret * TurretComponent)
-{
-	TankAimingComponent->SetTurretReference(TurretComponent);
-}
-
 // Sets default values
 ATank::ATank()
 {
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = false;
-	TankAimingComponent = CreateDefaultSubobject<UTankAimingComponent>(FName("Aiming component"));
+	//TankAimingComponent = CreateDefaultSubobject<UTankAimingComponent>(FName("Aiming component"));
 }
 
 // Called when the game starts or when spawned
@@ -60,6 +49,7 @@ void ATank::SetupPlayerInputComponent(class UInputComponent* InputComponent)
 
 void ATank::AimAt(FVector HitLocation)
 {
+	if (!Barrel) { return; }
 	TankAimingComponent->AimAt(HitLocation, LaunchSpeed);
 }
 
