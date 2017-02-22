@@ -32,7 +32,7 @@ public:
 	void AimAt(FVector WorldSpaceAim, float LaunchSpeed);
 	void MoveBarrelTowards(const FVector & AimDirection);
 	UPROPERTY(BlueprintReadOnly, Category = "State")
-	EFiringState AimingState = EFiringState::VE_Reloading;
+	EFiringState AimingState = EFiringState::VE_Aiming;
 private:
 	UTankBarrel* Barrel = nullptr;
 	UTankTurret* Turret = nullptr;

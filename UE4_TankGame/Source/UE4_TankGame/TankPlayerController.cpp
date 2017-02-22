@@ -2,6 +2,8 @@
 
 #include "UE4_TankGame.h"
 #include "TankPlayerController.h"
+#include "TankAimingComponent.h"
+
 
 ATank * ATankPlayerController::GetControlledTank() const
 {
@@ -17,6 +19,9 @@ void ATankPlayerController::Tick(float DeltaTime)
 void ATankPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
+	auto AimingComponent = GetControlledTank()->FindComponentByClass<UTankAimingComponent>();
+	if(AimingComponent)
+		FoundAimingComponent(AimingComponent);
 }
 
 void ATankPlayerController::AimTowardsCrosshair()
