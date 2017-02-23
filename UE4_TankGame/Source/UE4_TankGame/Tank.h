@@ -5,7 +5,6 @@ class UTankBarrel;
 class UTankTurret;
 class UTankAimingComponent;
 class AProjectile;
-class UTankMovementComponent;
 #include "GameFramework/Pawn.h"
 #include "Tank.generated.h"
 
@@ -40,9 +39,6 @@ public:
 protected:
 	UPROPERTY(BlueprintReadOnly)
 	UTankAimingComponent* TankAimingComponent = nullptr;
-
-	UPROPERTY(BlueprintReadOnly)
-	UTankMovementComponent * TankMovementComponent = nullptr;
 
 	UTankBarrel* Barrel = nullptr;
 	double LastFireTime = 0;
