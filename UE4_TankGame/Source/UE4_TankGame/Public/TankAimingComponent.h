@@ -36,7 +36,6 @@ public:
 	UPROPERTY(EditAnywhere, Category = Setup)
 	TSubclassOf<AProjectile> ProjectileBlueprint;
 
-
 	UPROPERTY(EditDefaultsOnly, Category = Firing)
 	float ReloadTimeInSeconds = 3;
 
@@ -47,8 +46,13 @@ public:
 	void MoveBarrelTowards(const FVector & AimDirection);
 	UPROPERTY(BlueprintReadOnly, Category = "State")
 	EFiringState AimingState = EFiringState::VE_Aiming;
+
+	virtual void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction) override;
+	void BeginPlay() override;
 private:
 	UTankBarrel* Barrel = nullptr;
 	UTankTurret* Turret = nullptr;
 	double LastFireTime = 0;
+	FVector AimDirection;
+	bool IsBarrelMove();
 };
