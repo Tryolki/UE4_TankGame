@@ -28,8 +28,10 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = Setup)
 	void Initialize(UTankBarrel * TankBarrel, UTankTurret * TankTurret);
+	UPROPERTY(EditAnywhere, Category = Firing)
+	float LaunchSpeed = 100000.f; // 1000 m/s
 
-	void AimAt(FVector WorldSpaceAim, float LaunchSpeed);
+	void AimAt(FVector HitLocation);
 	void MoveBarrelTowards(const FVector & AimDirection);
 	UPROPERTY(BlueprintReadOnly, Category = "State")
 	EFiringState AimingState = EFiringState::VE_Aiming;

@@ -3,7 +3,6 @@
 #pragma once
 class UTankBarrel;
 class UTankTurret;
-class UTankAimingComponent;
 class AProjectile;
 #include "GameFramework/Pawn.h"
 #include "Tank.generated.h"
@@ -14,8 +13,6 @@ class UE4_TANKGAME_API ATank : public APawn
 	GENERATED_BODY()
 
 public:
-	UPROPERTY(EditAnywhere, Category = Firing)
-	float LaunchSpeed = 100000.f; // 1000 m/s
 
 	UPROPERTY(EditDefaultsOnly, Category = Firing)
 	float ReloadTimeInSeconds = 3;
@@ -26,7 +23,7 @@ public:
 	UFUNCTION(BlueprintCallable, Category = Action)
 	void Fire();
 
-	void AimAt(FVector HitLocation);
+	//void AimAt(FVector HitLocation);
 
 	// Sets default values for this pawn's properties
 	ATank();
@@ -37,8 +34,6 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
 protected:
-	UPROPERTY(BlueprintReadOnly)
-	UTankAimingComponent* TankAimingComponent = nullptr;
 
 	UTankBarrel* Barrel = nullptr;
 	double LastFireTime = 0;

@@ -5,6 +5,7 @@
 #include "TankAimingComponent.h"
 #include "TankBarrel.h"
 #include "TankTurret.h"
+#include "Tank.h"
 
 
 
@@ -24,13 +25,12 @@ void UTankAimingComponent::Initialize(UTankBarrel * TankBarrel, UTankTurret * Ta
 	Turret->SetBarrelReference(Barrel);
 }
 
-
-void UTankAimingComponent::AimAt(FVector WorldSpaceAim, float LaunchSpeed)
+void UTankAimingComponent::AimAt(FVector HitLocation)
 {
 	if (!ensure(Barrel) || !ensure(Turret)) { return; }
 	FVector OutLaunchVelocity;
 	FVector StartLocation = Barrel->GetSocketLocation(FName("Projectile"));
-	FVector EndLocation = WorldSpaceAim;
+	FVector EndLocation = HitLocation;
 	auto bHaveAimSolution = UGameplayStatics::SuggestProjectileVelocity
 	(
 		this,

@@ -19,7 +19,6 @@ private:
 	ATank* ControlledAITank;
 	void Tick(float DeltaTime) override;
 	void BeginPlay() override;
-	ATank* GetControlledTank() const;
 	ATank* GetPlayerController() const;
 	float AcceptanceRadius = 5000.f;
 };
