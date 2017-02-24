@@ -3,25 +3,6 @@
 
 #include "UE4_TankGame.h"
 #include "Tank.h"
-#include "TankBarrel.h"
-#include "Projectile.h"
-
-
-void ATank::Fire()
-{
-	if ((FPlatformTime::Seconds() - LastFireTime) > ReloadTimeInSeconds)
-	{
-		if (!Barrel) { return; }
-		auto Projectile = GetWorld()->SpawnActor<AProjectile>(
-			ProjectileBlueprint,
-			Barrel->GetSocketLocation(FName("Projectile")),
-			Barrel->GetSocketRotation(FName("Projectile"))
-			);
-		Projectile->LaunchProjectile(5000);
-		LastFireTime = FPlatformTime::Seconds();
-	}
-
-}
 
 // Sets default values
 ATank::ATank()
