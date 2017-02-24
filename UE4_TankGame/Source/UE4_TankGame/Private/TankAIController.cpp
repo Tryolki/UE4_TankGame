@@ -2,20 +2,11 @@
 
 #include "UE4_TankGame.h"
 #include "UE4_TankGame/Public/TankAIController.h"
-
+#include "TankAimingComponent.h"
 void ATankAIController::BeginPlay()
 {
 	Super::BeginPlay();
-	ControlledAITank = GetControlledTank();
 	PlayerTank = GetPlayerController();
-	if (!ControlledAITank)
-	{
-		UE_LOG(LogTemp, Error, TEXT("Didn't find tank AI controller"));
-	}
-	else
-	{
-		UE_LOG(LogTemp, Warning, TEXT("AI tank name: %s"), *ControlledAITank->GetName());
-	}
 	if (!PlayerTank)
 	{
 		UE_LOG(LogTemp, Error, TEXT("Didn't find player controller"));
@@ -32,16 +23,12 @@ void ATankAIController::Tick(float DeltaTime)
 	if (PlayerTank)
 	{
 		MoveToActor(PlayerTank, AcceptanceRadius);
-		ControlledAITank->AimAt(PlayerTank->GetActorLocation());
+		auto AimingComponent = GetPawn()->FindComponentByClass<UTankAimingComponent>();
+		AimingComponent->AimAt(PlayerTank->GetActorLocation());
 		//ControlledAITank->Fire();
 	}
 
 
-}
-
-ATank * ATankAIController::GetControlledTank() const
-{
-	return Cast<ATank>(GetPawn());
 }
 
 ATank* ATankAIController::GetPlayerController() const

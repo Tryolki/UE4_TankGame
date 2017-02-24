@@ -2,6 +2,7 @@
 
 #pragma once
 
+class UTankAimingComponent;
 #include "Tank.h"
 #include "GameFramework/PlayerController.h"
 #include "TankPlayerController.generated.h"
@@ -22,10 +23,14 @@ public:
 	UPROPERTY(VisibleAnywhere)
 	float visibleDistance = 10000.f;
 	void Tick(float DeltaTime) override;
-	ATank * GetControlledTank() const;
+
 	void BeginPlay() override;
 	void AimTowardsCrosshair();
 	bool GetSightRayHitLocation(FVector & HitLocation) const;
 	bool GetLookDirection(FVector2D ScreenLocation, FVector & LookDirection) const;
 	bool GetLookVectorHitLocation(FVector LookDirection, FVector& HitLocation) const;
+protected:
+
+	UFUNCTION(BlueprintImplementableEvent, Category = Setup)
+	void FoundAimingComponent(UTankAimingComponent* AimingComponentRef);
 };
