@@ -21,7 +21,7 @@ public:
 	UPROPERTY(EditanyWhere)
 	float CrossHairYLocation = 0.3f;
 	UPROPERTY(VisibleAnywhere)
-	float visibleDistance = 10000.f;
+	float visibleDistance = 1000000.f;
 	void Tick(float DeltaTime) override;
 
 	void BeginPlay() override;

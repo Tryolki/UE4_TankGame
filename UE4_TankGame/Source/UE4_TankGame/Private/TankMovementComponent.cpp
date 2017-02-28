@@ -20,7 +20,6 @@ void UTankMovementComponent::IntendMoveForward(float Throw)
 void UTankMovementComponent::IntendTurnRight(float Throw)
 {
 	if (!ensure(LeftTrack && RightTrack)) { return; }
-	UE_LOG(LogTemp, Warning, TEXT("%s %f"), *GetOwner()->GetName(), Throw);
 	LeftTrack->SetThrottle(Throw);
 	RightTrack->SetThrottle(-Throw);
 }
