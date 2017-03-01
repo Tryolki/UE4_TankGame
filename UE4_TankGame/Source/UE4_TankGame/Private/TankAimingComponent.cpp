@@ -25,6 +25,11 @@ void UTankAimingComponent::BeginPlay()
 	LastFireTime = FPlatformTime::Seconds();
 }
 
+EFiringState UTankAimingComponent::GetFireState() const
+{
+	return EFiringState();
+}
+
 void UTankAimingComponent::TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction)
 {
 	if ((FPlatformTime::Seconds() - LastFireTime) < ReloadTimeInSeconds)
@@ -108,4 +113,9 @@ void UTankAimingComponent::Fire()
 		LastFireTime = FPlatformTime::Seconds();
 	}
 
+}
+
+EFiringState UTankAimingComponent::UTankAimingComponent::GetFireState()
+{
+	return AimingState;
 }

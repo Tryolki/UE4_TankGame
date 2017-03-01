@@ -25,7 +25,8 @@ void ATankAIController::Tick(float DeltaTime)
 		MoveToActor(PlayerTank, AcceptanceRadius);
 		auto AimingComponent = GetPawn()->FindComponentByClass<UTankAimingComponent>();
 		AimingComponent->AimAt(PlayerTank->GetActorLocation());
-		//ControlledAITank->Fire();
+		if(AimingComponent->GetFireState ==  EFiringState::VE_Locked)
+			AimingComponent->Fire();
 	}
 
 
