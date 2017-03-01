@@ -20,5 +20,5 @@ private:
 	void Tick(float DeltaTime) override;
 	void BeginPlay() override;
 	ATank* GetPlayerController() const;
-	float AcceptanceRadius = 5000.f;
+	float AcceptanceRadius = 3000.f;
 };
