@@ -11,6 +11,11 @@ AProjectile::AProjectile()
 	PrimaryActorTick.bCanEverTick = true;
 	MovementComponent = CreateDefaultSubobject<UProjectileMovementComponent>(FName("Projectile movement component"));
 	MovementComponent->bAutoActivate = false;
+	CollisionMesh = CreateDefaultSubobject<UStaticMeshComponent>(FName("Projectile collision"));
+	SetRootComponent(CollisionMesh);
+	CollisionMesh->SetNotifyRigidBodyCollision(true);
+	LaunchBlast = CreateDefaultSubobject<UParticleSystemComponent>(FName("Particle"));
+	LaunchBlast->AttachTo(RootComponent);
 }
 
 // Called when the game starts or when spawned
