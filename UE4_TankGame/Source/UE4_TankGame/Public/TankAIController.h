@@ -20,5 +20,6 @@ private:
 	void Tick(float DeltaTime) override;
 	void BeginPlay() override;
 	ATank* GetPlayerController() const;
+	UPROPERTY(EditAnywhere, Category=Setup)
 	float AcceptanceRadius = 3000.f;
 };
