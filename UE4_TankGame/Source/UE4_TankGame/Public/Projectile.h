@@ -28,7 +28,8 @@ protected:
 	UParticleSystemComponent* LaunchBlast = nullptr;
 	UPROPERTY(VisibleAnywhere)
 	UParticleSystemComponent* ImpactBlast = nullptr;
-	
+	UPROPERTY(VisibleAnywhere)
+	URadialForceComponent* ExplocionForce = nullptr;
 
 private:
 	UProjectileMovementComponent* MovementComponent = nullptr;
