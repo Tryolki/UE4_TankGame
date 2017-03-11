@@ -12,9 +12,10 @@ class AProjectile;
 UENUM(BlueprintType)
 enum class EFiringState : uint8
 {
-	VE_Locked 	UMETA(DisplayName = "Lock"),
-	VE_Aiming 	UMETA(DisplayName = "Aim"),
-	VE_Reloading 	UMETA(DisplayName = "Reload")
+	VE_Locked 		UMETA(DisplayName = "Lock"),
+	VE_Aiming 		UMETA(DisplayName = "Aim"),
+	VE_Reloading 	UMETA(DisplayName = "Reload"),
+	VE_OutOfAmmo 	UMETA(DisplayName = "OutOfAmmo")
 
 };
 
@@ -46,15 +47,18 @@ public:
 	void MoveBarrelTowards(const FVector & AimDirection);
 	UPROPERTY(BlueprintReadOnly, Category = "State")
 	EFiringState AimingState = EFiringState::VE_Aiming;
-
 	virtual void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction) override;
 	void BeginPlay() override;
 
 	EFiringState GetFireState() const;
+
+	UFUNCTION(BlueprintCallable, Category = Firing)
+	int GetAmmoCount() const;
 private:
 	UTankBarrel* Barrel = nullptr;
 	UTankTurret* Turret = nullptr;
 	double LastFireTime = 0;
 	FVector AimDirection;
 	bool IsBarrelMove();
+	int AmmoCount = 3;
 };
