@@ -20,4 +20,11 @@ public:
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
+	virtual float TakeDamage(float DamageAmount,struct FDamageEvent const & DamageEvent,class AController * EventInstigator,AActor * DamageCauser) override;
+private:
+	UPROPERTY(EditDefaultsOnly, Category = Setup)
+	int32 StartingHealth = 100.f;
+
+	UPROPERTY(VisibleAnywhere, Category = Health)
+	int32 CurrentHealth = StartingHealth;
 };
