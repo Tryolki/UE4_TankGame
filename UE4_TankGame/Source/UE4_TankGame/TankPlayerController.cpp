@@ -29,7 +29,7 @@ void ATankPlayerController::AimTowardsCrosshair()
 	}
 }
 
-bool ATankPlayerController::GetSightRayHitLocation(FVector & HitLocation) const
+bool ATankPlayerController::GetSightRayHitLocation(FVector & HitLocation) const	
 {
 	int32 viewportSizeX, viewportSizeY;
 	GetViewportSize(viewportSizeX, viewportSizeY);
