@@ -13,7 +13,7 @@ UCLASS()
 class UE4_TANKGAME_API ATankAIController : public AAIController
 {
 	GENERATED_BODY()
-	
+	virtual void SetPawn(APawn* InPawn) override;
 private:
 	ATank* PlayerTank;
 	ATank* ControlledAITank;
@@ -22,4 +22,7 @@ private:
 	ATank* GetPlayerController() const;
 	UPROPERTY(EditAnywhere, Category=Setup)
 	float AcceptanceRadius = 3000.f;
+
+	UFUNCTION()
+	void OnPossedObjectDeath();
 };
