@@ -40,18 +40,20 @@ ATank* ATankAIController::GetPlayerController() const
 		return nullptr;
 	return Cast<ATank>(playerControllerPawn);
 }
+
 void ATankAIController::SetPawn(APawn* InPawn)
 {
 	Super::SetPawn(InPawn);
 	auto PossessedEnemy = Cast<ATank>(InPawn);
 	if (!ensure(PossessedEnemy)) { return; }
 	PossessedEnemy->OnDeath.AddUniqueDynamic(this, &ATankAIController::OnPossedObjectDeath);
-
 }
 
 void ATankAIController::OnPossedObjectDeath()
 {
 	UE_LOG(LogTemp, Warning, TEXT("%s death"), *GetOwner()->GetName());
+	if (!ensure(GetPawn())) { return; }
+	GetPawn()->DetachFromControllerPendingDestroy();
 }
 
 

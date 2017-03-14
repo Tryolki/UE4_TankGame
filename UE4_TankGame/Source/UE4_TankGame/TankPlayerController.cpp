@@ -3,7 +3,7 @@
 #include "UE4_TankGame.h"
 #include "TankPlayerController.h"
 #include "TankAimingComponent.h"
-
+#include "Tank.h"
 
 void ATankPlayerController::Tick(float DeltaTime)
 {
@@ -52,7 +52,7 @@ bool ATankPlayerController::GetLookVectorHitLocation(FVector LookDirection, FVec
 			HitObject,
 			LineStart,
 			LineEnd,
-			ECollisionChannel::ECC_Visibility
+			ECollisionChannel::ECC_Camera
 		))
 	{
 		HitLocation = HitObject.Location;
@@ -73,4 +73,17 @@ bool ATankPlayerController::GetLookDirection(FVector2D ScreenLocation, FVector &
 		ScreenLocation.Y,
 		CameraWorldPosition,
 		LookDirection);
+}
+
+void ATankPlayerController::SetPawn(APawn* InPawn)
+{
+	Super::SetPawn(InPawn);
+	auto PossessedEnemy = Cast<ATank>(InPawn);
+	if (!ensure(PossessedEnemy)) { return; }
+	PossessedEnemy->OnDeath.AddUniqueDynamic(this, &ATankPlayerController::OnPossedObjectDeath);
+}
+
+void ATankPlayerController::OnPossedObjectDeath()
+{
+	StartSpectatingOnly();
 }
