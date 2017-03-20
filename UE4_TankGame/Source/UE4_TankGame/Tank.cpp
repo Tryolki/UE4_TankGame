@@ -29,7 +29,7 @@ float ATank::TakeDamage(float DamageAmount, FDamageEvent const & DamageEvent, AC
 {
 	int32 DamagePoint = FPlatformMath::RoundToInt(DamageAmount);
 	auto DamageToApply = FMath::Clamp(DamagePoint, 0, CurrentHealth);
-	CurrentHealth -= DamageToApply;
+	CurrentHealth -= DamageToApply * Armor;
 	if (CurrentHealth < 0)
 	{
 		OnDeath.Broadcast();

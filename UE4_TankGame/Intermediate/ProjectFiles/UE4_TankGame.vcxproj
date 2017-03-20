@@ -423,6 +423,7 @@
 		<ClInclude Include="..\..\Source\UE4_TankGame\UE4_TankGame.h" />
 		<ClCompile Include="..\..\Source\UE4_TankGame\UE4_TankGameGameModeBase.cpp" />
 		<ClInclude Include="..\..\Source\UE4_TankGame\UE4_TankGameGameModeBase.h" />
+		<ClCompile Include="..\..\Source\UE4_TankGame\Private\BaseCharacter.cpp" />
 		<ClCompile Include="..\..\Source\UE4_TankGame\Private\Projectile.cpp" />
 		<ClCompile Include="..\..\Source\UE4_TankGame\Private\TankAIController.cpp" />
 		<ClCompile Include="..\..\Source\UE4_TankGame\Private\TankAimingComponent.cpp" />
@@ -430,6 +431,7 @@
 		<ClCompile Include="..\..\Source\UE4_TankGame\Private\TankMovementComponent.cpp" />
 		<ClCompile Include="..\..\Source\UE4_TankGame\Private\TankTrack.cpp" />
 		<ClCompile Include="..\..\Source\UE4_TankGame\Private\TankTurret.cpp" />
+		<ClInclude Include="..\..\Source\UE4_TankGame\Public\BaseCharacter.h" />
 		<ClInclude Include="..\..\Source\UE4_TankGame\Public\Projectile.h" />
 		<ClInclude Include="..\..\Source\UE4_TankGame\Public\TankAIController.h" />
 		<ClInclude Include="..\..\Source\UE4_TankGame\Public\TankAimingComponent.h" />
