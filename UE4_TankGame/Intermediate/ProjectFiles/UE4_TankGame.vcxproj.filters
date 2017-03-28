@@ -100,18 +100,18 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\UE4_TankGame\Tank.cpp">
+    <ClCompile Include="..\..\Source\UE4_TankGame\Private\Tank.cpp">
       <Filter>Source\UE4_TankGame\Private</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\UE4_TankGame\TankPlayerController.cpp">
+    <ClCompile Include="..\..\Source\UE4_TankGame\Private\TankPlayerController.cpp">
       <Filter>Source\UE4_TankGame\Private</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\UE4_TankGame\Tank.h">
+    <ClInclude Include="..\..\Source\UE4_TankGame\Public\Tank.h">
       <Filter>Source\UE4_TankGame\Public</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\UE4_TankGame\TankPlayerController.h">
+    <ClInclude Include="..\..\Source\UE4_TankGame\Public\TankPlayerController.h">
       <Filter>Source\UE4_TankGame\Public</Filter>
     </ClInclude>
   </ItemGroup>

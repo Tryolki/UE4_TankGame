@@ -260,12 +260,12 @@
     <None Include="..\..\Config\DefaultEngine.ini" />
     <None Include="..\..\Config\DefaultGame.ini" />
     <None Include="..\..\Config\DefaultInput.ini" />
-    <ClCompile Include="..\..\Source\UE4_TankGame\Tank.cpp" />
-    <ClInclude Include="..\..\Source\UE4_TankGame\Tank.h" />
-    <ClCompile Include="..\..\Source\UE4_TankGame\TankPlayerController.cpp" />
-    <ClInclude Include="..\..\Source\UE4_TankGame\TankPlayerController.h" />
+    <ClCompile Include="..\..\Source\UE4_TankGame\Private\Tank.cpp" />
+    <ClInclude Include="..\..\Source\UE4_TankGame\Public\Tank.h" />
     <None Include="..\..\Source\UE4_TankGame\UE4_TankGame.Build.cs" />
+    <ClCompile Include="..\..\Source\UE4_TankGame\Private\TankPlayerController.cpp" />
     <ClCompile Include="..\..\Source\UE4_TankGame\UE4_TankGame.cpp" />
+    <ClInclude Include="..\..\Source\UE4_TankGame\Public\TankPlayerController.h" />
     <ClInclude Include="..\..\Source\UE4_TankGame\UE4_TankGame.h" />
     <ClCompile Include="..\..\Source\UE4_TankGame\UE4_TankGameGameModeBase.cpp" />
     <ClInclude Include="..\..\Source\UE4_TankGame\UE4_TankGameGameModeBase.h" />

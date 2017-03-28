@@ -19,6 +19,22 @@ enum class EFiringState : uint8
 
 };
 
+USTRUCT(BlueprintType)
+struct FTower
+{
+	GENERATED_BODY()
+
+	UPROPERTY(EditAnywhere, Category = Setup)
+	UTankBarrel* Barrel = nullptr;
+
+	UPROPERTY(EditAnywhere, Category = Setup)
+	UTankTurret* Turret = nullptr;
+
+	UPROPERTY(EditAnywhere, Category = Setup)
+	TSubclassOf<AProjectile> ProjectileBlueprint;
+};
+
+
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class UE4_TANKGAME_API UTankAimingComponent : public UActorComponent
 {
@@ -34,8 +50,14 @@ public:
 	UPROPERTY(EditAnywhere, Category = Firing)
 	float LaunchSpeed = 100000.f; // 1000 m/s
 
+	UFUNCTION(BlueprintCallable, Category = Setup)
+	void ChangeWeapon(UTankBarrel * TankBarrel, UTankTurret * TankTurret);
+
 	UPROPERTY(EditAnywhere, Category = Setup)
 	TSubclassOf<AProjectile> ProjectileBlueprint;
+
+	UFUNCTION(BlueprintCallable, Category = Firing)
+	void AddTower(FTower Tower);
 
 	UPROPERTY(EditDefaultsOnly, Category = Firing)
 	float ReloadTimeInSeconds = 3;
@@ -45,8 +67,10 @@ public:
 
 	void AimAt(FVector HitLocation);
 	void MoveBarrelTowards(const FVector & AimDirection);
+
 	UPROPERTY(BlueprintReadOnly, Category = "State")
 	EFiringState AimingState = EFiringState::VE_Aiming;
+
 	virtual void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction) override;
 	void BeginPlay() override;
 
@@ -54,7 +78,10 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = Firing)
 	int GetAmmoCount() const;
+
 private:
+	int activeTowerIndex = 0;
+	TArray<FTower> Towers;
 	UTankBarrel* Barrel = nullptr;
 	UTankTurret* Turret = nullptr;
 	double LastFireTime = 0;
