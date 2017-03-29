@@ -24,13 +24,13 @@ struct FTower
 {
 	GENERATED_BODY()
 
-	UPROPERTY(EditAnywhere, Category = Setup)
+	UPROPERTY(BlueprintReadWrite, Category = Setup)
 	UTankBarrel* Barrel = nullptr;
 
-	UPROPERTY(EditAnywhere, Category = Setup)
+	UPROPERTY(BlueprintReadWrite, Category = Setup)
 	UTankTurret* Turret = nullptr;
 
-	UPROPERTY(EditAnywhere, Category = Setup)
+	UPROPERTY(BlueprintReadWrite, Category = Setup)
 	TSubclassOf<AProjectile> ProjectileBlueprint;
 };
 

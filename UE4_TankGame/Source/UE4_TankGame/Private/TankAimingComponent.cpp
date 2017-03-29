@@ -64,8 +64,14 @@ void UTankAimingComponent::AddTower(FTower Tower)
 }
 
 void UTankAimingComponent::ChangeWeapon(UTankBarrel * TankBarrel, UTankTurret * TankTurret)
-{
-
+{	
+	if (activeTowerIndex > Towers.Num()-1)
+	{
+		activeTowerIndex = 0;
+	}
+	else {
+		activeTowerIndex++;
+	}
 }
 
 void UTankAimingComponent::AimAt(FVector HitLocation)
