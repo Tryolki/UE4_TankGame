@@ -60,6 +60,7 @@ void UTankAimingComponent::Initialize(UTankBarrel * TankBarrel, UTankTurret * Ta
 
 void UTankAimingComponent::AddTower(FTower Tower)
 {
+	Tower.Turret->SetBarrelReference(Tower.Barrel);
 	Towers.Add(Tower);
 }
 
