@@ -27,7 +27,7 @@ void UTankAimingComponent::BeginPlay()
 
 void UTankAimingComponent::TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction)
 {
-	if (AmmoCount <= 0)
+	if (Towers[activeTowerIndex].AmmoCount <= 0)
 	{
 		AimingState = EFiringState::VE_OutOfAmmo;
 	}
@@ -47,8 +47,8 @@ void UTankAimingComponent::TickComponent(float DeltaTime, enum ELevelTick TickTy
 
 bool UTankAimingComponent::IsBarrelMove()
 {
-	if(!ensure(Barrel)) { return false; }
-	auto BarrelForward = Barrel->GetForwardVector();
+	if(!ensure(Towers[activeTowerIndex].Barrel)) { return false; }
+	auto BarrelForward = Towers[activeTowerIndex].Barrel->GetForwardVector();
 	return !BarrelForward.Equals(AimDirection, 0.05);
 }
 void UTankAimingComponent::Initialize(UTankBarrel * TankBarrel, UTankTurret * TankTurret)
@@ -58,11 +58,28 @@ void UTankAimingComponent::Initialize(UTankBarrel * TankBarrel, UTankTurret * Ta
 	Turret->SetBarrelReference(Barrel);
 }
 
+void UTankAimingComponent::AddTower(FTower Tower)
+{
+	Tower.Turret->SetBarrelReference(Tower.Barrel);
+	Towers.Add(Tower);
+}
+
+void UTankAimingComponent::ChangeWeapon(UTankBarrel * TankBarrel, UTankTurret * TankTurret)
+{	
+	if (activeTowerIndex > Towers.Num()-1)
+	{
+		activeTowerIndex = 0;
+	}
+	else {
+		activeTowerIndex++;
+	}
+}
+
 void UTankAimingComponent::AimAt(FVector HitLocation)
 {
-	if (!ensure(Barrel) || !ensure(Turret)) { return; }
+	if (!ensure(Towers[activeTowerIndex].Barrel) || !ensure(Towers[activeTowerIndex].Turret)) { return; }
 	FVector OutLaunchVelocity;
-	FVector StartLocation = Barrel->GetSocketLocation(FName("Projectile"));
+	FVector StartLocation = Towers[activeTowerIndex].Barrel->GetSocketLocation(FName("Projectile"));
 	FVector EndLocation = HitLocation;
 	auto bHaveAimSolution = UGameplayStatics::SuggestProjectileVelocity
 	(
@@ -85,16 +102,16 @@ void UTankAimingComponent::AimAt(FVector HitLocation)
 
 void UTankAimingComponent::MoveBarrelTowards(const FVector & AimDirection)
 {
-	if (!ensure(Turret)) { return; }
-	auto BarrelRotator = Barrel->GetForwardVector().Rotation();
+	if (!ensure(Towers[activeTowerIndex].Turret)) { return; }
+	auto BarrelRotator = Towers[activeTowerIndex].Barrel->GetForwardVector().Rotation();
 	auto AimAsRotator = AimDirection.Rotation();
 	auto DeltaRotator = AimAsRotator - BarrelRotator;
 	if (FMath::Abs(DeltaRotator.Yaw) < 180)
 	{
-		Turret->Rotate(DeltaRotator.Yaw, DeltaRotator.Pitch);
+		Towers[activeTowerIndex].Turret->Rotate(DeltaRotator.Yaw, DeltaRotator.Pitch);
 	}
 	else {
-		Turret->Rotate(-DeltaRotator.Yaw, DeltaRotator.Pitch);
+		Towers[activeTowerIndex].Turret->Rotate(-DeltaRotator.Yaw, DeltaRotator.Pitch);
 	}
 }
 
@@ -102,15 +119,15 @@ void UTankAimingComponent::Fire()
 {
 	if (AimingState != EFiringState::VE_Reloading && AimingState != EFiringState::VE_OutOfAmmo)
 	{
-		if (!ensure(Barrel)) { return; }
+		if (!ensure(Towers[activeTowerIndex].Barrel)) { return; }
 		auto Projectile = GetWorld()->SpawnActor<AProjectile>(
-			ProjectileBlueprint,
-			Barrel->GetSocketLocation(FName("Projectile")),
-			Barrel->GetSocketRotation(FName("Projectile"))
+			Towers[activeTowerIndex].ProjectileBlueprint,
+			Towers[activeTowerIndex].Barrel->GetSocketLocation(FName("Projectile")),
+			Towers[activeTowerIndex].Barrel->GetSocketRotation(FName("Projectile"))
 			);
 		Projectile->LaunchProjectile(5000);
 		LastFireTime = FPlatformTime::Seconds();
-		AmmoCount--;
+		Towers[activeTowerIndex].AmmoCount--;
 	}
 
 }
@@ -121,5 +138,5 @@ EFiringState UTankAimingComponent::GetFireState() const
 }
 int UTankAimingComponent::GetAmmoCount() const
 {
-	return AmmoCount;
+	return Towers[activeTowerIndex].AmmoCount;
 }

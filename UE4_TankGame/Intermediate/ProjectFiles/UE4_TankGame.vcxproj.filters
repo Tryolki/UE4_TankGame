@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\UE4_TankGame.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{825C36A9-60A0-4967-8E03-F9842263C9B5}</UniqueIdentifier>
+      <UniqueIdentifier>{638F990A-92AC-4C0D-8418-07A7DBBB46A8}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\UE4_TankGame.Target.cs">
       <Filter>Source</Filter>
@@ -12,7 +12,7 @@
       <Filter>Source</Filter>
     </None>
     <Filter Include="Config">
-      <UniqueIdentifier>{BE6181FB-A384-40F7-B799-696E118299F3}</UniqueIdentifier>
+      <UniqueIdentifier>{4DF644B6-EE9C-4E89-B79C-88EDE5117149}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -27,7 +27,7 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\UE4_TankGame">
-      <UniqueIdentifier>{5A0644A9-D1D2-4320-8998-06C2C4E4726E}</UniqueIdentifier>
+      <UniqueIdentifier>{23645AE4-DB9B-4D5D-BD06-45DFB34F3B92}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\UE4_TankGame\UE4_TankGame.Build.cs">
       <Filter>Source\UE4_TankGame</Filter>
@@ -45,12 +45,15 @@
       <Filter>Source\UE4_TankGame</Filter>
     </ClInclude>
     <Filter Include="Source\UE4_TankGame\Private">
-      <UniqueIdentifier>{D5EFECFD-1A6B-4E0B-A5A3-2FC7019EC6FD}</UniqueIdentifier>
+      <UniqueIdentifier>{B864D9FE-C3C0-478D-BA01-698D4CE68365}</UniqueIdentifier>
     </Filter>
     <ClCompile Include="..\..\Source\UE4_TankGame\Private\BaseCharacter.cpp">
       <Filter>Source\UE4_TankGame\Private</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\UE4_TankGame\Private\Projectile.cpp">
+      <Filter>Source\UE4_TankGame\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\UE4_TankGame\Private\Tank.cpp">
       <Filter>Source\UE4_TankGame\Private</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\UE4_TankGame\Private\TankAIController.cpp">
@@ -65,6 +68,9 @@
     <ClCompile Include="..\..\Source\UE4_TankGame\Private\TankMovementComponent.cpp">
       <Filter>Source\UE4_TankGame\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\UE4_TankGame\Private\TankPlayerController.cpp">
+      <Filter>Source\UE4_TankGame\Private</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\UE4_TankGame\Private\TankTrack.cpp">
       <Filter>Source\UE4_TankGame\Private</Filter>
     </ClCompile>
@@ -72,12 +78,15 @@
       <Filter>Source\UE4_TankGame\Private</Filter>
     </ClCompile>
     <Filter Include="Source\UE4_TankGame\Public">
-      <UniqueIdentifier>{D4EA65D4-36DF-4540-BBDD-09D36B01105C}</UniqueIdentifier>
+      <UniqueIdentifier>{5DDCF792-ABF5-4901-9269-6BC8BD00C78D}</UniqueIdentifier>
     </Filter>
     <ClInclude Include="..\..\Source\UE4_TankGame\Public\BaseCharacter.h">
       <Filter>Source\UE4_TankGame\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\UE4_TankGame\Public\Projectile.h">
+      <Filter>Source\UE4_TankGame\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\UE4_TankGame\Public\Tank.h">
       <Filter>Source\UE4_TankGame\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\UE4_TankGame\Public\TankAIController.h">
@@ -92,26 +101,13 @@
     <ClInclude Include="..\..\Source\UE4_TankGame\Public\TankMovementComponent.h">
       <Filter>Source\UE4_TankGame\Public</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\UE4_TankGame\Public\TankPlayerController.h">
+      <Filter>Source\UE4_TankGame\Public</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\UE4_TankGame\Public\TankTrack.h">
       <Filter>Source\UE4_TankGame\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\UE4_TankGame\Public\TankTurret.h">
-      <Filter>Source\UE4_TankGame\Public</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\Source\UE4_TankGame\Tank.cpp">
-      <Filter>Source\UE4_TankGame\Private</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\UE4_TankGame\TankPlayerController.cpp">
-      <Filter>Source\UE4_TankGame\Private</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\Source\UE4_TankGame\Tank.h">
-      <Filter>Source\UE4_TankGame\Public</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\UE4_TankGame\TankPlayerController.h">
       <Filter>Source\UE4_TankGame\Public</Filter>
     </ClInclude>
   </ItemGroup>
