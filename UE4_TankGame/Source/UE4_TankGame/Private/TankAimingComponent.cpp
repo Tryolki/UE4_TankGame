@@ -27,7 +27,7 @@ void UTankAimingComponent::BeginPlay()
 
 void UTankAimingComponent::TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction)
 {
-	if (AmmoCount <= 0)
+	if (Towers[activeTowerIndex].AmmoCount <= 0)
 	{
 		AimingState = EFiringState::VE_OutOfAmmo;
 	}
@@ -127,7 +127,7 @@ void UTankAimingComponent::Fire()
 			);
 		Projectile->LaunchProjectile(5000);
 		LastFireTime = FPlatformTime::Seconds();
-		AmmoCount--;
+		Towers[activeTowerIndex].AmmoCount--;
 	}
 
 }
@@ -138,5 +138,5 @@ EFiringState UTankAimingComponent::GetFireState() const
 }
 int UTankAimingComponent::GetAmmoCount() const
 {
-	return AmmoCount;
+	return Towers[activeTowerIndex].AmmoCount;
 }

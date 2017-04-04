@@ -31,6 +31,9 @@ struct FTower
 	UTankTurret* Turret = nullptr;
 
 	UPROPERTY(BlueprintReadWrite, Category = Setup)
+	int AmmoCount = 4;
+
+	UPROPERTY(BlueprintReadWrite, Category = Setup)
 	TSubclassOf<AProjectile> ProjectileBlueprint;
 };
 
@@ -87,5 +90,4 @@ private:
 	double LastFireTime = 0;
 	FVector AimDirection;
 	bool IsBarrelMove();
-	int AmmoCount = 3;
 };
